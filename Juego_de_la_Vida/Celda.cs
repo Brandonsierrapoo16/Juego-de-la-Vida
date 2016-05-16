@@ -46,6 +46,8 @@ namespace WindowsFormsApplication1
         List<List<Celda>> tablero;
         int tamaño;
         Random r = new Random();
+        public int vivas;
+        public int numero_vivas = 0;
         public Tablero(int tamaño)
         {
             tablero = new List<List<Celda>>();
@@ -75,6 +77,7 @@ namespace WindowsFormsApplication1
 
         public void next()
         {
+            numero_vivas = 0;
             for (int i = 0; i < tamaño; i++)
                 for (int j = 0; j < tamaño; j++)
                 {
@@ -85,6 +88,7 @@ namespace WindowsFormsApplication1
                     //Any live cell
                     if (tablero[i][j].estado_actual == Celda.Estado.viva)
                     {
+                        this.numero_vivas++;
                         // with two or three live neighbours lives on to the next generation.
                         if (vecinas == 2 || vecinas == 3)
                         {
