@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1
         List<List<Celda>> tablero;
         int tamaño;
         Random r = new Random();
-        public int vivas;
+        
         public int numero_vivas = 0;
         public Tablero(int tamaño)
         {
@@ -82,26 +82,26 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < tamaño; j++)
                 {
                     int vecinas = cuantas_vacinas_vivas(i, j);
-                    // Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+                    // Cualquier célula viva con menos de dos vecinos vivos muere, como un causada por la subpoblación..
                     if (vecinas < 2)
                         tablero[i][j].estado_siguiente = Celda.Estado.muerta;
-                    //Any live cell
+                    //Cualquier célula viva
                     if (tablero[i][j].estado_actual == Celda.Estado.viva)
                     {
                         this.numero_vivas++;
-                        // with two or three live neighbours lives on to the next generation.
+                        // con dos o tres vecinos vivos,esta viva para la siguiente generación.
                         if (vecinas == 2 || vecinas == 3)
                         {
 
                         }
-                        // with more than three live neighbours dies 
+                        // con más de tres vecinos vivos muere 
                         else if (vecinas > 3)
                         {
                             tablero[i][j].estado_siguiente = Celda.Estado.muerta;
                         }
 
                     }
-                    //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+                    //Cualquier célula muerta con exactamente tres vecinos vivos se convierte en una célula viva, como si se reproducieran.
                     else
                     {
                         if (vecinas == 3)
@@ -117,9 +117,17 @@ namespace WindowsFormsApplication1
 
         public void update()
         {
-            for (int i = 0; i < tamaño; i++)
-                for (int j = 0; j < tamaño; j++)
-                    tablero[i][j].update();
+            
+            {
+                for (int i = 0; i < tamaño; i++)
+                    for (int j = 0; j < tamaño; j++)
+                        tablero[i][j].update();
+
+            } 
+
+             
+           
+
         }
 
 
